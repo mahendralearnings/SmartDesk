@@ -203,7 +203,9 @@ class DocumentClassifier:
         joblib.dump(self.model, path)
         logger.info("model_saved", path=str(path))
 
+
     @classmethod
+    
     def load(cls, path: str | Path, classifier_type: ClassifierType) -> DocumentClassifier:
         """Load a saved model."""
         instance = cls(classifier_type)
