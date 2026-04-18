@@ -1,0 +1,4 @@
+# Production overrides
+app:
+  log_level: WARNING
+  environment: prod

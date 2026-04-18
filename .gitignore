@@ -1,0 +1,58 @@
+# ── Python ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+
+# ── Virtual environments ──
+.venv/
+venv/
+env/
+
+# ── uv ──
+# DO commit: pyproject.toml, uv.lock, .python-version
+# Do NOT commit .venv (auto-created by uv sync)
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ── Testing ──
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ── Linting / Type checking ──
+.mypy_cache/
+.ruff_cache/
+
+# ── Environment ──
+.env
+.env.local
+.env.*.local
+
+# ── ML / Data ──
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.bin
+*.safetensors
+data/
+models/
+*.onnx
+wandb/
+mlruns/
+
+# ── Notebooks ──
+.ipynb_checkpoints/
+
+# ── OS ──
+Thumbs.db
