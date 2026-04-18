@@ -1,0 +1,13 @@
+# SmartDesk base configuration
+# Environment-specific overrides: dev.yaml, prod.yaml
+app:
+  name: SmartDesk
+  log_level: INFO
+
+preprocessing:
+  remove_urls: true
+  remove_emails: true
+  remove_emojis: false
+  lowercase: true
+  lemmatize: true
+  min_token_length: 2

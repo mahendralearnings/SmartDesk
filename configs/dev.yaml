@@ -1,0 +1,4 @@
+# Development overrides
+app:
+  log_level: DEBUG
+  environment: dev
