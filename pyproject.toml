@@ -45,7 +45,16 @@ docs = [
     "mkdocs>=1.5",
     "mkdocs-material>=9.5",
 ]
-
+ml = [
+  "spacy>=3.7,<4",
+  "torch>=2.2",
+  "transformers>=4.40",
+  "sentence-transformers>=3.0",
+  # ... existing deps
+  "seqeval>=1.2.2",
+  "datasets>=4.8.4",
+  "evaluate>=0.4.6",
+]
 # ── Tool configs ──
 [tool.ruff]
 line-length = 100
@@ -76,3 +85,5 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/smartdesk"]
+
+
