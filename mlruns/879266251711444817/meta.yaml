@@ -1,0 +1,8 @@
+artifact_location: file:C:/interview_prep_march26/SmartDesk/SmartDesk/mlruns/879266251711444817
+creation_time: 1777122888625
+experiment_id: '879266251711444817'
+last_update_time: 1777122888625
+lifecycle_stage: active
+name: smartdesk-ner-lora
+trace_location: null
+workspace: default

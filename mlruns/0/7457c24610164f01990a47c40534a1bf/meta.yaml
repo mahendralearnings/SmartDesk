@@ -1,0 +1,14 @@
+artifact_uri: file:C:/interview_prep_march26/SmartDesk/SmartDesk/mlruns/0/7457c24610164f01990a47c40534a1bf/artifacts
+end_time: 1777124409734
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7457c24610164f01990a47c40534a1bf
+run_name: caring-rook-292
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777124409660
+status: 3
+tags: []
+user_id: mahem

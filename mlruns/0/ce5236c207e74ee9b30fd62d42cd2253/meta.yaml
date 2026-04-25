@@ -1,0 +1,14 @@
+artifact_uri: file:C:/interview_prep_march26/SmartDesk/SmartDesk/mlruns/0/ce5236c207e74ee9b30fd62d42cd2253/artifacts
+end_time: 1777124222840
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ce5236c207e74ee9b30fd62d42cd2253
+run_name: hilarious-turtle-279
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777124222764
+status: 3
+tags: []
+user_id: mahem

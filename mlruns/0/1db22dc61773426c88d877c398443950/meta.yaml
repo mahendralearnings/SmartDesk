@@ -1,0 +1,14 @@
+artifact_uri: file:C:/interview_prep_march26/SmartDesk/SmartDesk/mlruns/0/1db22dc61773426c88d877c398443950/artifacts
+end_time: 1777124390688
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1db22dc61773426c88d877c398443950
+run_name: worried-bear-527
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777124390624
+status: 3
+tags: []
+user_id: mahem

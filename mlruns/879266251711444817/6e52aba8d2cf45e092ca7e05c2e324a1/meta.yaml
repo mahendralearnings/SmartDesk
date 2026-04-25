@@ -1,0 +1,14 @@
+artifact_uri: file:C:/interview_prep_march26/SmartDesk/SmartDesk/mlruns/879266251711444817/6e52aba8d2cf45e092ca7e05c2e324a1/artifacts
+end_time: 1777122896614
+entry_point_name: ''
+experiment_id: '879266251711444817'
+lifecycle_stage: active
+run_id: 6e52aba8d2cf45e092ca7e05c2e324a1
+run_name: lora-r32-alpha64
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777122896548
+status: 3
+tags: []
+user_id: mahem

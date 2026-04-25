@@ -2,7 +2,6 @@
 name = "smartdesk"
 version = "0.1.0"
 description = "Enterprise Document Intelligence Platform"
-readme = "README.md"
 
 requires-python = ">=3.11"
 dependencies = [
@@ -37,6 +36,7 @@ dependencies = [
     "datasets>=4.8.4",
     "langchain-anthropic>=1.4.1",
     "langchain-community>=0.4.1",
+    "mlflow>=3.11.1",
 ]
 
 # ── uv-native dependency groups (replaces [project.optional-dependencies]) ──

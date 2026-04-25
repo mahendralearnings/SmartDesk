@@ -48,15 +48,28 @@ async def chat_endpoint(
         raise HTTPException(status_code=500, detail="Internal server error")
 
 
+# @router.get("/health", response_model=HealthResponse)
+# async def health_check(client: OllamaClient = Depends(get_ollama_client)):
+#     """
+#     Liveness + readiness probe.
+#     Returns 200 if FastAPI is up, reports whether Ollama is reachable.
+#     """
+#     healthy = await client.is_healthy()
+#     return HealthResponse(
+#         status="ok",
+#         ollama_reachable=healthy,
+#         model=client.model,
+#     )
 @router.get("/health", response_model=HealthResponse)
-async def health_check(client: OllamaClient = Depends(get_ollama_client)):
-    """
-    Liveness + readiness probe.
-    Returns 200 if FastAPI is up, reports whether Ollama is reachable.
-    """
-    healthy = await client.is_healthy()
+async def health_check():
+    import anthropic
+    import os
+
+    # Check Claude API
+    claude_ok = bool(os.getenv("ANTHROPIC_API_KEY"))
+
     return HealthResponse(
         status="ok",
-        ollama_reachable=healthy,
-        model=client.model,
+        ollama_reachable=claude_ok,
+        model="claude-sonnet-4-5",
     )
