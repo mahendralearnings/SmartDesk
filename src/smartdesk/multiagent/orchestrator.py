@@ -14,6 +14,14 @@ import anthropic
 from smartdesk.multiagent.state import OrchestratorState, SubTask
 from smartdesk.multiagent.specialist_agents import SPECIALIST_MAP
 
+try:
+    from langsmith import traceable
+except ImportError:
+    def traceable(*_args, **_kwargs):
+        def _decorator(func):
+            return func
+        return _decorator
+
 client = anthropic.Anthropic()
 MODEL  = "claude-sonnet-4-5"
 
@@ -48,6 +56,7 @@ class Orchestrator:
     def __init__(self, verbose: bool = True):
         self.verbose = verbose
 
+    @traceable(name="orchestrator_run", run_type="chain")
     def run(self, task: str) -> str:
         state: OrchestratorState = {
             "task": task,
@@ -94,6 +103,7 @@ class Orchestrator:
 
         return state["final_answer"]
 
+    @traceable(name="orchestrator_plan", run_type="chain")
     def _plan(self, task: str) -> list[SubTask]:
         """Ask Claude to decompose the task into subtasks."""
         response = client.messages.create(
@@ -125,6 +135,7 @@ class Orchestrator:
                         result=None, status="pending"),
             ]
 
+    @traceable(name="orchestrator_synthesise", run_type="chain")
     def _synthesise(self, state: OrchestratorState) -> str:
         """Combine all agent results into a final answer."""
         results_text = "\n\n".join(

@@ -6,6 +6,14 @@ import os
 from smartdesk.agents.tools import TOOLS, TOOL_MAP
 from smartdesk.agents.prompt import build_system_prompt, build_user_prompt
 
+try:
+    from langsmith import traceable
+except ImportError:
+    def traceable(*_args, **_kwargs):
+        def _decorator(func):
+            return func
+        return _decorator
+
 logger = logging.getLogger(__name__)
 MAX_STEPS = 8
 
@@ -42,6 +50,7 @@ class ReActAgent:
             self.backend = "ollama"
             print(f"Using Ollama backend: {self.model}")
 
+    @traceable(name="react_agent_llm_call", run_type="llm")
     def _call_llm(self, user_prompt: str) -> str:
         if self.backend == "claude":
             response = self.client.messages.create(
@@ -80,6 +89,7 @@ class ReActAgent:
             r.raise_for_status()
             return r.json()["message"]["content"].strip()
 
+    @traceable(name="react_agent_run", run_type="chain")
     def run(self, task: str, verbose: bool = True) -> str:
         history = []
         step = 0

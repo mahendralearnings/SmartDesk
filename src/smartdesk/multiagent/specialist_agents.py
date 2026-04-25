@@ -9,10 +9,19 @@ Specialist agents are simpler than the full ReAct agent:
 import anthropic
 from smartdesk.agents.tools import search_invoices, calculate_overdue_days, get_vendor_info
 
+try:
+    from langsmith import traceable
+except ImportError:
+    def traceable(*_args, **_kwargs):
+        def _decorator(func):
+            return func
+        return _decorator
+
 client = anthropic.Anthropic()
 MODEL  = "claude-sonnet-4-5"
 
 
+@traceable(name="specialist_llm_call", run_type="llm")
 def _call_claude(system: str, user: str) -> str:
     r = client.messages.create(
         model=MODEL,
@@ -24,6 +33,7 @@ def _call_claude(system: str, user: str) -> str:
 
 
 # ── SPECIALIST 1: Retrieval agent ────────────────────────────
+@traceable(name="retrieval_agent", run_type="chain")
 def retrieval_agent(instruction: str) -> str:
     """
     Focused on finding invoices.
@@ -40,6 +50,7 @@ Return only the facts requested — no commentary."""
 
 
 # ── SPECIALIST 2: Analysis agent ─────────────────────────────
+@traceable(name="analysis_agent", run_type="chain")
 def analysis_agent(instruction: str) -> str:
     """
     Focused on date calculations and financial analysis.
@@ -59,6 +70,7 @@ Be precise with numbers. Return structured analysis."""
 
 
 # ── SPECIALIST 3: Summary agent ──────────────────────────────
+@traceable(name="summary_agent", run_type="chain")
 def summary_agent(instruction: str) -> str:
     """
     Focused on producing clear, executive-level summaries.
