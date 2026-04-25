@@ -8,11 +8,15 @@ from smartdesk.agents.prompt import build_system_prompt, build_user_prompt
 
 try:
     from langsmith import traceable
+    from langsmith.wrappers import wrap_anthropic
 except ImportError:
     def traceable(*_args, **_kwargs):
         def _decorator(func):
             return func
         return _decorator
+
+    def wrap_anthropic(client):
+        return client
 
 logger = logging.getLogger(__name__)
 MAX_STEPS = 8
@@ -35,7 +39,7 @@ class ReActAgent:
     def _setup_client(self):
         if self.model in self.CLAUDE_MODELS:
             import anthropic
-            self.client = anthropic.Anthropic()
+            self.client = wrap_anthropic(anthropic.Anthropic())
             self.backend = "claude"
             print(f"Using Claude backend: {self.model}")
 
