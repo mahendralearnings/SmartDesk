@@ -88,6 +88,7 @@ smartdesk/
 ├── docs/                    # Architecture docs, uv guide
 └── notebooks/               # Exploration only
 ```
+<img width="977" height="765" alt="image" src="https://github.com/user-attachments/assets/5df64dba-2cf1-4477-8450-19d65e6f6c1f" />
 
 ## Design patterns used
 
